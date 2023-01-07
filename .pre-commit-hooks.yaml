@@ -1,0 +1,6 @@
+-   id: check_filename
+    name: Check filename
+    description: "Ensure filename pattern"
+    entry: check_filename
+    language: python
+    files: ''
