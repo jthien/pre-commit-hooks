@@ -40,7 +40,7 @@ dev = [
 "Bug Tracker" = "https://github.com/jthien/pre-commit-hooks/issues"
 
 [project.scripts]
-check_filename = "src.pre_commit_hooks.check_filename:main"
+check_filename = "pre_commit_hooks.check_filename:main"
 
 [tool.autoflake]
 ignore-init-module-imports = true
