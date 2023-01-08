@@ -11,6 +11,9 @@ repos:
         -   --unsafe
     -   id: end-of-file-fixer
     -   id: trailing-whitespace
+    -   id: name-tests-test
+        args:
+        -   --pytest-test-first
 -   repo: https://github.com/PyCQA/autoflake
     rev: v1.7.6
     hooks:
