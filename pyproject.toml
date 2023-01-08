@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pre-commit-hook"
+version = "0.0.1"
+authors = [
+  { name="Joerg Thienenkamp", email="joerg.thienenkamp@gmail.com"},
+]
+description = "Test pre-commit checks"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+]
+[project.optional-dependencies]
+dev = [
+  "autoflake",
+  "black",
+  "build",
+  "coverage",
+  "flake8",
+  "isort",
+  "mypy",
+  "pre-commit",
+  "pytest",
+  "pytest-cov",
+  "toml",
+  "tox",
+  "twine",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/jthien/pre-commit-hooks"
+"Bug Tracker" = "https://github.com/jthien/pre-commit-hooks/issues"
+
+[project.scripts]
+check_filename = "pre_commit_hooks.check_filename:main"
+
+[tool.autoflake]
+ignore-init-module-imports = true
+in-place = true
+recursive = true
+remove-all-unused-imports = true
+remove-unused-variables = true
+
+[tool.isort]
+profile = "black"
+
+[tool.coverage.report]
+exclude_lines = [
+  "if __name__ == .__main__.:",
+]
+
+[tool.pytest.ini_options]
+#Removing coverage reporting while developing
+addopts = "-ra -v --cov --cov-report term-missing"
+#-r = result a=all expect ...
+#-v = verbose
+#addopts = "-ra -v"
+minversion = 7.0
+pythonpath = ["src/pre_commit_hooks"]
+testpaths = ["tests"]
