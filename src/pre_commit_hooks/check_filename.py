@@ -1,17 +1,19 @@
 from __future__ import annotations
 
 import argparse
+from pathlib import Path
 from typing import Sequence
 
 
 def check_filename_prefix(filename: str, prefixes: list) -> int:
     retv = 1
-    print("Check " + filename)
+    file = Path(filename)
+    # print("Check " + filename + "(" + file.name + ")")
     for prefix in prefixes:
-        print("Start with " + prefix)
-        if filename.startswith(prefix):
+        # print("Start with " + prefix)
+        if file.name.startswith(prefix):
             retv = 0
-    print("Result " + str(retv))
+    # print("Result " + str(retv))
     return retv
 
 

@@ -7,9 +7,13 @@ from check_filename import check_filename_prefix, main
     [
         ("ops_file_1", ["ops_", "job_"], 0),
         ("job_file_1", ["ops_", "job_"], 0),
+        ("folder/job_file_1", ["ops_", "job_"], 0),
+        ("folder/job_file_2.py", ["ops_", "job_"], 0),
+        ("folder1/folder2/job_file_2.py", ["ops_", "job_"], 0),
         ("Ops_file_1", ["ops_", "job_"], 1),
         ("Job_file_1", ["ops_", "job_"], 1),
         ("ups_file_1", ["ops_", "job_"], 1),
+        ("folder1/folder2/Job_file_2.py", ["ops_", "job_"], 1),
     ],
 )
 def test_01_check_filename_prefix(filename, prefix_list, expected):
