@@ -1,3 +1,4 @@
+[![build status](https://github.com/jthien/pre-commit-hooks/blob/main/.github/workflows/pre-commit.yml/badge.svg)](https://github.com/jthien/pre-commit-hooks/blob/main/.github/workflows/pre-commit.yml)
 Testing of pre-commit checks which can be used with [pre-commit](http://pre-commit.com).
 
 ## Usage
