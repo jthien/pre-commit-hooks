@@ -23,9 +23,9 @@ jobs:
     - name: Get changed files
       id: changed_files
       run: |
-        echo ::set-output name=files::$(
+        echo "files="$(
           git diff --name-only ${{ github.event.pull_request.base.sha }}...HEAD
-        )
+        ) >> $GITHUB_OUTPUT
     - name: Run pre-commit checks
       run: |
         pre-commit run ${{ steps.changed_files.outputs.files }}
