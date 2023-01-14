@@ -23,9 +23,21 @@ jobs:
     - name: Get changed files
       id: changed_files
       run: |
-        echo "files="$(
-          git diff --name-only ${{ github.event.pull_request.base.sha }}...HEAD
-        ) >> $GITHUB_OUTPUT
+        file_list=$(git diff --name-only $GITHUB_SHA
+        echo "files=${file_list}" >> $GITHUB_OUTPUT
     - name: Run pre-commit checks
       run: |
         pre-commit run ${{ steps.changed_files.outputs.files }}
+    - name: Generate list using Markdown
+      run: |
+        echo "Pre-Commit checks are successful" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
+        echo "- PR looks good" >> $GITHUB_STEP_SUMMARY
+        echo "- PR can be merged" >> $GITHUB_STEP_SUMMARY
+    - name: Post results as a comment
+      if: always()
+      run: |
+        echo "##[add-pr-comment] Pre-commit checks ran successfully"
+        echo "##[add-pr-comment] Pre-commit checks results:"
+        echo "$(pre-commit run $(cat ${{ steps.changed_files.outputs.stdout }} ))"
+        curl -sSL -H "Authorization: token $GITHUB_TOKEN" -H "Accept: application/vnd.github+json" -d "{\"body\":\"Pre-commit checks ran successfully\n\nPre-commit checks results:\n$(pre-commit run $(cat ${{ steps.changed_files.outputs.stdout }} ))\"}" "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/${{ github.event.pull_request.number }}/comments"
