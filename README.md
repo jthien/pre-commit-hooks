@@ -1,6 +1,7 @@
 [![github-check](https://github.com/jthien/pre-commit-hooks/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/jthien/pre-commit-hooks/actions/workflows/pre-commit.yml)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/jthien/pre-commit-hooks/main.svg)](https://results.pre-commit.ci/latest/github/jthien/pre-commit-hooks/main)
 
+
 Testing of pre-commit checks which can be used with [pre-commit](http://pre-commit.com).
 
 ## Usage
