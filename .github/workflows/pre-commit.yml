@@ -23,7 +23,7 @@ jobs:
     - name: Get changed files
       id: changed_files
       run: |
-        file_list=$(git diff --name-only $GITHUB_SHA
+        file_list=$(git diff --name-only $GITHUB_SHA)
         echo "files=${file_list}" >> $GITHUB_OUTPUT
     - name: Run pre-commit checks
       run: |
