@@ -15,7 +15,7 @@ repos:
         args:
         -   --pytest-test-first
 -   repo: https://github.com/PyCQA/autoflake
-    rev: v2.0.0
+    rev: v2.0.1
     hooks:
     -   id: autoflake
         args:
@@ -35,6 +35,6 @@ repos:
           - "--check-only"
         exclude: ^build/
 -   repo: https://github.com/psf/black
-    rev: 22.12.0
+    rev: 23.1.0
     hooks:
     -   id: black
