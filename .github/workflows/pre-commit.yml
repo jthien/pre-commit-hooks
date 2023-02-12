@@ -41,3 +41,16 @@ jobs:
         echo "##[add-pr-comment] Pre-commit checks results:"
         echo "$(pre-commit run $(cat ${{ steps.changed_files.outputs.stdout }} ))"
         curl -sSL -H "Authorization: token $GITHUB_TOKEN" -H "Accept: application/vnd.github+json" -d "{\"body\":\"Pre-commit checks ran successfully\n\nPre-commit checks results:\n$(pre-commit run $(cat ${{ steps.changed_files.outputs.stdout }} ))\"}" "https://api.github.com/repos/$GITHUB_REPOSITORY/issues/${{ github.event.pull_request.number }}/comments"
+
+    - name: Failure
+      if: ${{ failure() }}
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          await github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: 'pre-commit failed! Please ensure pre-commit doesnt report any error.'
+          })

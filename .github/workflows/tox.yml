@@ -1,0 +1,9 @@
+name: tox
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  main:
+    uses: asottile/workflows/.github/workflows/tox.yml@v1.0.0
