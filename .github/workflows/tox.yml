@@ -6,7 +6,7 @@ on:
 
 jobs:
   main:
-    uses: asottile/workflows/.github/workflows/tox.yml@v1.0.0
+    uses: asottile/workflows/.github/workflows/tox.yml@v1.8.1
     with:
       env: '["py312"]'
       os: ubuntu-latest
